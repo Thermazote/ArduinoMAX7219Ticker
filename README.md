@@ -25,5 +25,5 @@ HC-06 uses frequency hopping spread spectrum technique (FHSS) to avoid interfere
 ## Circuit of elements
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Scheme.png)
 ## Firmware design features
-* The firmware uses the library **SofwareSerial**. Macro `_SS_MAX_RX_BUFF` redefined from `64` to `256`. This is necessary to increase the buffer size from 64 to 256 bytes. Such a measure is necessary in order for the data packet to fit into the buffer. File SofwareSerial.h is in _"C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src"_ path.
+* The firmware uses the library **SofwareSerial**. Macro `_SS_MAX_RX_BUFF` is redefined from `64` to `256`. This is necessary to increase the buffer size from 64 to 256 bytes. Such a measure is necessary in order for the data packet to fit into the buffer. File SofwareSerial.h is in _"C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src"_ path.
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/App_LOGO.png)
