@@ -19,4 +19,5 @@ Arduino NANO is a compact microelectronic prototyping platform designed for use 
 The basis of the Arduino Nano is an ATmega328-based microcontroller, a logic chip for processing data with a clock frequency of 16 MHz, which has 8 analog and 14 general-purpose digital pins on board, as well as all the necessary interfaces: I2C, SPI and UART.
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Arduino_NANO.jpg)
 
+## Bluetooth module: 
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/App_LOGO.png)
