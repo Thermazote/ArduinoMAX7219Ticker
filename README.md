@@ -20,4 +20,6 @@ The basis of the Arduino Nano is an ATmega328-based microcontroller, a logic chi
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Arduino_NANO.jpg)
 
 ## Bluetooth module: 
+![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/HC-06.jpg)
+
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/App_LOGO.png)
