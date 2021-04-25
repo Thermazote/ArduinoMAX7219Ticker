@@ -22,5 +22,7 @@ with SPI™, QSPI™, and MICROWIRE™, and has slewrate-limited segment drivers
 HC-06 is a Bluetooth module designed for establishing short range wireless data communication between two systems. The module works on Bluetooth 2.0 communication protocol and it can only act as a slave device. This is cheapest method for wireless data transmission and more flexible compared to other methods and it even can transmit files at speed up to 2.1Mb/s.
 HC-06 uses frequency hopping spread spectrum technique (FHSS) to avoid interference with other devices and to have full duplex transmission. The device works on the frequency range from 2.402 GHz to 2.480GHz.
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/HC-06.jpg)
+## Circuit of elements
+![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Scheme.png)
 
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/App_LOGO.png)
