@@ -1,10 +1,10 @@
 # Arduino-MAX7219-Ticker
-## Objective of the project: 
+## Objective of the project
 Learn how to work with wireless data transmission using bluetooth technology on the example of creating an android application for managing a ticker.
 
-### Tasks:
-1. Development of a mobile android application for data exchange using bluetooth technolog
-2. Development of firmware and construction of a circuit of elements
+### Tasks
+1. Development of a mobile android application for data exchange using bluetooth technology.
+2. Development of firmware and construction of a circuit of elements.
 
 ## Dot matrix controller: MAX7219
 The MAX7219/MAX7221 are compact, serial input/output common-cathode display drivers that interface
