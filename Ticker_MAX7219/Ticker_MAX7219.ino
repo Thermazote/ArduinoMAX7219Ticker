@@ -3,7 +3,7 @@
 #include <Adafruit_GFX.h>
 #include <Max72xxPanel.h>
 
-/*------------- Настройки -------------*/
+/*-------------- Настройки --------------*/
 //Пины блютуз модуля
 #define BT_RX 3
 #define BT_TX 2
