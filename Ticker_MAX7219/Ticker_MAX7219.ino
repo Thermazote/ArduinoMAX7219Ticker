@@ -447,6 +447,7 @@ void loop()
     if (btStatic == 0)
     {
       //Бегущая строка
+      //...
       
     }
     else if (btStatic == 1 && displayChanged)
