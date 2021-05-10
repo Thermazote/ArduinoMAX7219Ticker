@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "FvSF3B4xsTm1U3goT7zxOv0ZeKKV656QFlJqG7RzgiySn7eP+xJhbIxbWq9GpfHU+eJj6U++078X4zGl6YB03A==",
+  "success": true,
+  "projectFilePath": "D:\\Mobile Applications\\MAX72xx Management\\MAX72xx Management\\MAX72xx Management\\MAX72xx Management.iOS\\MAX72xx Management.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alex\\.nuget\\packages\\plugin.bluetoothclassic\\1.1.5\\plugin.bluetoothclassic.1.1.5.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,16 @@
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Debug\netstandard2.0\MAX72xx Management.deps.json
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Debug\netstandard2.0\MAX72xx Management.dll
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Debug\netstandard2.0\ref\MAX72xx Management.dll
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Debug\netstandard2.0\MAX72xx Management.pdb
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MainContent.xaml.g.cs
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\Settings.xaml.g.cs
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MAX72xx Management.AssemblyInfoInputs.cache
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MAX72xx Management.AssemblyInfo.cs
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MAX72xx Management.csproj.CoreCompileInputs.cache
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MAX72xx Management.dll
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\ref\MAX72xx Management.dll
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MAX72xx Management.pdb
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Debug\netstandard2.0\MAX72xx Management.csprojAssemblyReference.cache

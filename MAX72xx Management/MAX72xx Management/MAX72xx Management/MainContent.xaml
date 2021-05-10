@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAX72xx_Management.MainContent"
+             Title="Main"
+             Style="{DynamicResource TabbedPage}">
+
+    <ScrollView>
+        <StackLayout>
+            <Frame BackgroundColor="#0aa597" Padding="24" CornerRadius="0">
+                <Label Text="MAX72xx Management" HorizontalTextAlignment="Center" TextColor="#fdfdfd" FontSize="36"/>
+            </Frame>
+
+            <Label Text="Setting up the LED driver" FontSize="Title" Padding="30,10" HorizontalOptions="Center" TextColor="Black"/>
+
+            <StackLayout Orientation="Horizontal" Padding="30, 10">
+                <Label Text="Activate matrix" FontSize="Body" HorizontalOptions="FillAndExpand" TextColor="Black"/>
+                <Switch x:Name="MatrixSwitch" IsToggled="False" HorizontalOptions="End" ThumbColor="#0aa597" OnColor="#8bd1d3" Toggled="OnMatrixToggled"/>
+            </StackLayout>
+
+            <StackLayout RadioButtonGroup.GroupName="Mode" Padding="30, 10">
+                <Label Text="Select mode:" FontSize="Body" TextColor="Black"/>
+                <RadioButton x:Name="TextRBtn" Content="Text" IsChecked="True" CheckedChanged="OnModeChanged" />
+                <RadioButton x:Name="DrawingRBtn" Content="Drawing" />
+            </StackLayout>
+
+            <Label Text="Type a string:" FontSize="Body" TextColor="Black" Padding="30, 10"/>
+            <Entry x:Name="EntryText" Unfocused="EntryText_Unfocused" Margin="30, 10"/>
+
+            <StackLayout Orientation="Horizontal" Padding="30, 10">
+                <Label Text="Static mode" FontSize="Body" HorizontalOptions="FillAndExpand" TextColor="Black"/>
+                <Switch x:Name="StaticModeSwitch" IsToggled="False" HorizontalOptions="End" ThumbColor="#0aa597" OnColor="#8bd1d3" Toggled="OnStaticModeToggled"/>
+            </StackLayout>
+
+            <Label x:Name="BrightnessLabel" Text="Brightness: 7" FontSize="Body" TextColor="Black" Padding="30, 10"/>
+            <Slider x:Name="BrightnessSlider" Maximum="15" Value="7"  MinimumTrackColor="#8bd1d3" MaximumTrackColor="Gray" ThumbColor="#0aa597" Margin="13, 10" ValueChanged="OnBrightnessChanged" />
+
+            <Label x:Name="SpeedLabel" Text="Speed: 7" FontSize="Body" TextColor="Black" Padding="30, 10"/>
+            <Slider x:Name="SpeedSlider" Maximum="15" Value="7" MinimumTrackColor="#8bd1d3" MaximumTrackColor="Gray" ThumbColor="#0aa597" Margin="13, 10" ValueChanged="OnSpeedChanged" />
+
+            <Label x:Name="DrawingFieldLabel" Text="Drawing field:" FontSize="Body" TextColor="Black" Padding="30, 10"/>
+
+            <StackLayout x:Name="MatrixSelection" Orientation="Horizontal" Padding="30, 10" HorizontalOptions="Center">
+                <Button x:Name="FirstMatrixBtn" BackgroundColor="#ff2400" WidthRequest="40" HeightRequest="40" Clicked="OnMatrixSelectionBtnClicked"/>
+                <Button x:Name="SecondMatrixBtn" BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" Clicked="OnMatrixSelectionBtnClicked"/>
+                <Button x:Name="ThirdMatrixBtn" BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" Clicked="OnMatrixSelectionBtnClicked"/>
+                <Button x:Name="FourthMatrixBtn" BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" Clicked="OnMatrixSelectionBtnClicked"/>
+            </StackLayout>
+
+            <Grid x:Name="DrawingGrid" Padding="15, 15, 15, 15" ColumnSpacing="4" RowSpacing="4" BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- 0 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="0" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 1 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="1" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 2 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="2" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 3 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="3" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 4 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="4" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 5 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="5" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 6 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="6" Clicked="OnMatrixBtnClicked"/>
+
+                <!-- 7 -->
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="0" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="1" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="2" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="3" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="4" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="5" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="6" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+                <Button BackgroundColor="#203126" WidthRequest="40" HeightRequest="40" CornerRadius="20" Grid.Column="7" Grid.Row="7" Clicked="OnMatrixBtnClicked"/>
+            </Grid>
+
+            <Button x:Name="ResetBtn" Text="Reset" TextColor="Black" FontSize="Large" BorderWidth="3" BorderColor="Black" Clicked="ResetBtn_Clicked" HorizontalOptions="Center" Margin="0, 12"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
