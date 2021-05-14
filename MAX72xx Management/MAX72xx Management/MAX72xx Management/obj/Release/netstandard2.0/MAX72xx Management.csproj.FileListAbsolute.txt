@@ -18,7 +18,6 @@ D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Release\netstandard2.0\MAX72xx Management.dll
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Release\netstandard2.0\ref\MAX72xx Management.dll
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\bin\Release\netstandard2.0\MAX72xx Management.pdb
-D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.csprojAssemblyReference.cache
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\App.xaml.g.cs
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MainContent.xaml.g.cs
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MainPage.xaml.g.cs
@@ -30,3 +29,4 @@ D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.dll
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\ref\MAX72xx Management.dll
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.pdb
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.csprojAssemblyReference.cache

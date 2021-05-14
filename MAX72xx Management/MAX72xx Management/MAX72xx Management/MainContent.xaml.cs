@@ -57,6 +57,7 @@ namespace MAX72xx_Management
 
         private void OnStaticModeToggled(object sender, ToggledEventArgs args)
         {
+            SpeedSlider.IsEnabled = !args.Value;
             TransmitDataToBluetoothDevice();
         }
 
@@ -135,20 +136,23 @@ namespace MAX72xx_Management
 
         private void ResetBtn_Clicked(object sender, EventArgs e)
         {
-            const int ANY_MATRIX = 0;
-
-            for (int i = 0; i < MATRIX_COUNT; i++)
-                for (int j = 0; j < MATRIX_HEIGHT; j++)
-                    for (int k = 0; k < MATRIX_WIDTH; k++)
-                        btnColors[i, j, k] = Color.FromHex("#203126");
-
-
-            foreach (Button button in DrawingGrid.Children)
+            if (!TextRBtn.IsChecked)
             {
-                button.BackgroundColor = btnColors[ANY_MATRIX, Grid.GetRow(button), Grid.GetColumn(button)];
-            }
+                const int ANY_MATRIX = 0;
 
-            TransmitDataToBluetoothDevice(TextOrMatrixChanged: true);
+                for (int i = 0; i < MATRIX_COUNT; i++)
+                    for (int j = 0; j < MATRIX_HEIGHT; j++)
+                        for (int k = 0; k < MATRIX_WIDTH; k++)
+                            btnColors[i, j, k] = Color.FromHex("#203126");
+
+
+                foreach (Button button in DrawingGrid.Children)
+                {
+                    button.BackgroundColor = btnColors[ANY_MATRIX, Grid.GetRow(button), Grid.GetColumn(button)];
+                }
+
+                TransmitDataToBluetoothDevice(TextOrMatrixChanged: true);
+            }
         }
 
         private async void TransmitDataToBluetoothDevice(bool TextOrMatrixChanged = false)
