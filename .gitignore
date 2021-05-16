@@ -1,7 +1,7 @@
 ### Files which are useless for git ###
 MAX72xx Management/Extra
 MAX72xx Management/AppIcons
-MAX72xx Management/Android APK/*.zips
+*.zips
 
 ### XamarinStudio ###
 .packages
