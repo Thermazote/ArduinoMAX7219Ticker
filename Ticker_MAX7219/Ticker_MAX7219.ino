@@ -3,7 +3,7 @@
 #include <Adafruit_GFX.h>
 #include <Max72xxPanel.h>
 
-/*-------------- Настройки --------------*/
+/*------------- Настройки -------------*/
 //Пины блютуз модуля
 #define BT_RX 3
 #define BT_TX 2
@@ -38,8 +38,9 @@ unsigned char btSpeed;          //Скорость прокрутки {0 - 15}
 unsigned char btPixels[32];     //Массив состояний пикселей матрицы
 String btString = "";           //Строка с текстом
 
-//Изменились данные для вывода
-bool displayChanged = false;     
+//Изменились данные
+bool displayChanged = false;    //Для отрисовки  
+bool settingsChanged = false;   //Для настроек  
 
 //Шрифт для вывода символов
 const PROGMEM unsigned char font[][5] = {
@@ -266,7 +267,7 @@ void loop()
     {
       //Ожидание прихода в буфер полного пакета
       delay(WAITING_PACKAGE_TIMEOUT);
-    
+      
       //Считываем байты настроек
       btActivateMatrix = btSerial.read();
       btMode = btSerial.read();       
@@ -274,6 +275,9 @@ void loop()
       btBrightness = btSerial.read();
       btSpeed = btSerial.read();
 
+      //Выставляем флаг чтобы выполнить обновление настроек
+      settingsChanged = true;
+      
       //Проверяем содержит ли пакет изменения по строке или массиву состояний
       if (btSerial.available() == 1)
       {
@@ -405,7 +409,11 @@ void loop()
     }
   }
   
-  
+  if (settingsChanged)
+  {
+    matrix.setIntensity(btBrightness);
+    settingsChanged = false;
+  }
   /* Обновляем состояние матрицы по одному из 4 алгоритмов:
    * 1. Бегущее изображение
    * 2. Статичное изображение
@@ -422,8 +430,6 @@ void loop()
     else if (btStatic == 1 && displayChanged)
     {
       //Статичное изображение
-  
-      //Отрисовываем иозображение
       for (int col = 0; col < 32; col++)
       {
         for (int row = 0; row < 8; row++)
@@ -468,11 +474,13 @@ void loop()
         if (symbNumber < btString.length())
         {
           //Находим номер отрисовываемого символа в массиве
-          if (btString[symbNumber] > 31 && btString[symbNumber] < 256)
+          if (btString[symbNumber] > 31 && btString[symbNumber] < 127)
             fontIndex = btString[symbNumber] - 32;
-          //else
-            //...
-
+          else if (btString[symbNumber] > 191 && btString[symbNumber] < 256)
+            fontIndex = btString[symbNumber] - 96;
+          else
+            fontIndex = 160;
+            
           //Если символ это не пробел отрисовываем, иначе делаем обычный офсет
           if (fontIndex != 0)
           {
