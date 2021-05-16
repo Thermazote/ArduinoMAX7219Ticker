@@ -29,18 +29,19 @@ Max72xxPanel matrix = Max72xxPanel(MATRIX_CS, NUM_VERTICAL_MATRIX, NUM_HORIZONTA
 SoftwareSerial btSerial(BT_TX, BT_RX);
 
 //Последовательность байт принятых по блютуз
-unsigned char btByte;           //Контрольный байт
-unsigned char btActivateMatrix; //Матрица: откл.(0), вкл.(1) 
-unsigned char btMode;           //Режим работы: рисование(0), текст(1) 
-unsigned char btStatic;         //Статичность: откл.(0) вкл.(1)
-unsigned char btBrightness;     //Яркость матрицы {0 - 15}
-unsigned char btSpeed;          //Скорость прокрутки {0 - 15}
-unsigned char btPixels[32];     //Массив состояний пикселей матрицы
-String btString = "";           //Строка с текстом
+unsigned char btByte;             //Контрольный байт
+unsigned char btActivateMatrix;   //Матрица: откл.(0), вкл.(1) 
+unsigned char btMode;             //Режим работы: рисование(0), текст(1) 
+unsigned char btStatic;           //Статичность: откл.(0) вкл.(1)
+unsigned char btBrightness;       //Яркость матрицы {0 - 15}
+unsigned char btSpeed;            //Скорость прокрутки {0 - 15}
+unsigned char btPixels[32];       //Массив состояний пикселей матрицы
+unsigned char btString[248] = {0};//Строка с текстом
 
 //Изменились данные
 bool displayChanged = false;    //Для отрисовки  
-bool settingsChanged = false;   //Для настроек  
+bool settingsChanged = false;   //Для настроек
+bool matrixTurnedOn = false;    //Матрица влкючилась
 
 //Шрифт для вывода символов
 const PROGMEM unsigned char font[][5] = {
@@ -104,7 +105,6 @@ const PROGMEM unsigned char font[][5] = {
   {0x07, 0x08, 0x70, 0x08, 0x07}, // Y
   {0x61, 0x51, 0x49, 0x45, 0x43}, // Z
   {0x00, 0x7f, 0x41, 0x41, 0x00}, // [
-  {0xff, 0xff, 0xff, 0xff, 0xff}, // Сущность в виде гномика (в ASCII тут ничего нет, но без него не заработает)
   {0x02, 0x04, 0x08, 0x10, 0x20}, // \
   {0x00, 0x41, 0x41, 0x7f, 0x00}, // ]
   {0x04, 0x02, 0x01, 0x02, 0x04}, // ^
@@ -267,26 +267,51 @@ void loop()
     {
       //Ожидание прихода в буфер полного пакета
       delay(WAITING_PACKAGE_TIMEOUT);
-      
-      //Считываем байты настроек
-      btActivateMatrix = btSerial.read();
-      btMode = btSerial.read();       
-      btStatic = btSerial.read();     
-      btBrightness = btSerial.read();
-      btSpeed = btSerial.read();
 
-      //Выставляем флаг чтобы выполнить обновление настроек
-      settingsChanged = true;
+      unsigned char byte_1 = btSerial.read();
+      unsigned char byte_2 = btSerial.read();
+      unsigned char byte_3 = btSerial.read();
+      unsigned char byte_4 = btSerial.read();
+      unsigned char byte_5 = btSerial.read();
+
+      //Проверяем что принимаем осмысленные данные для настроек, а не мусор
+      if ((byte_1 == 0 || byte_1 == 1) && (byte_2 == 0 || byte_2 == 1)\
+       && (byte_3 == 0 || byte_3 == 1) && (byte_4 >= 0 && byte_4 <= 16)\
+       && (byte_5 >= 0 || byte_5 <= 16))
+      {
+        //Если матрица включилась, взводим соответствующий флаг 
+        if (btActivateMatrix == 0 && byte_1 == 1)
+          matrixTurnedOn = true;
+          
+        //Считываем байты настроек
+        btActivateMatrix = byte_1;
+        btMode = byte_2;       
+        btStatic = byte_3;     
+        btBrightness = byte_4;
+        btSpeed = byte_5;
+        
+        //Выставляем флаг чтобы выполнить обновление настроек
+        settingsChanged = true;
+      }
+      else
+      {
+        //Иначе сливаем буфер
+        while (btSerial.available() > 0)
+          btSerial.read();
+      }
+
       
-      //Проверяем содержит ли пакет изменения по строке или массиву состояний
-      if (btSerial.available() == 1)
+      /*Проверяем что содержится дальше:
+       * закрывающий байт
+       * данные о массиве состояний или строке
+       * мусорные данные
+      */
+      if (btSerial.available() == 1 && btSerial.peek() == END_CHAR)
       {
         //Контрольный байт выставляем на закрытие пакета
         btByte = btSerial.read();
       }
-
-      //Если пакет все еще открыт
-      if (btByte == START_CHAR)
+      else if ((btSerial.available() == 33) || (btSerial.available() < 250 && btSerial.peek() > 31))
       {
         //Выставляем флаг чтобы выполнить переотрисовку на матрице
         displayChanged = true;
@@ -311,14 +336,22 @@ void loop()
         else if (btMode == 1)
         {
           //Посимвольный парсинг строки
-          btString = "";
+          int parsIndex = 0;
+          memset(btString,0,sizeof(btString));;
           btByte = btSerial.read();
           while(btByte != END_CHAR)
           {
-            btString += (char)btByte;
+            btString[parsIndex]= btByte;
             btByte = btSerial.read();
+            parsIndex++;
           }
         }
+      }
+      else
+      {
+        //Иначе сливаем буфер
+        while (btSerial.available() > 0)
+          btSerial.read();
       }
         
       //Если включен вывод переменных в порт
@@ -397,7 +430,8 @@ void loop()
         {
           //Строка текста
           Serial.print("String: ");
-          Serial.println(btString); 
+          for (int i = 0; i < strlen(btString); i++)
+            Serial.print(btString[i]);
         }
       }
     }
@@ -408,12 +442,29 @@ void loop()
         btSerial.read();
     }
   }
-  
+
+  //Обновляем настройки если они изменились
   if (settingsChanged)
   {
-    matrix.setIntensity(btBrightness);
     settingsChanged = false;
+    matrix.setIntensity(btBrightness);
+    if (btActivateMatrix == 0)
+    {
+      matrix.fillScreen(LOW);
+      matrix.write();
+      return 0;  
+    }
+    else if (btActivateMatrix == 1 && matrixTurnedOn)
+    {
+      matrixTurnedOn = false;
+      displayChanged = true;
+    }
   }
+
+  //Если матрица выключена возвращаемся в начало
+  if (btActivateMatrix == 0)
+    return 0;
+    
   /* Обновляем состояние матрицы по одному из 4 алгоритмов:
    * 1. Бегущее изображение
    * 2. Статичное изображение
@@ -458,11 +509,11 @@ void loop()
     else if (btStatic == 1 && displayChanged)
     {
       //Статичная строка
-      char symbNumber = 0;//Номер текущего символа в строке
-      char col = 0;       //Колонка матрицы
-      char fontIndex;     //Индекс символа из массива шрифта
-      char factStart = 0; //Фактическое начало символа
-      char factEnd = 4;   //Фактический конец символа
+      unsigned char symbNumber = 0;//Номер текущего символа в строке
+      unsigned char col = 0;       //Колонка матрицы
+      unsigned char fontIndex;     //Индекс символа из массива шрифта
+      unsigned char factStart = 0; //Фактическое начало символа
+      unsigned char factEnd = 4;   //Фактический конец символа
       
       //Гасим все пиксели матрицы
       matrix.fillScreen(LOW);
@@ -471,13 +522,13 @@ void loop()
       while (col < 32)
       {
         //Если символы в строке не кончились отрисовываем, иначе прекращаем
-        if (symbNumber < btString.length())
+        if (symbNumber < strlen(btString))
         {
           //Находим номер отрисовываемого символа в массиве
           if (btString[symbNumber] > 31 && btString[symbNumber] < 127)
             fontIndex = btString[symbNumber] - 32;
           else if (btString[symbNumber] > 191 && btString[symbNumber] < 256)
-            fontIndex = btString[symbNumber] - 96;
+            fontIndex = btString[symbNumber] - 98;
           else
             fontIndex = 160;
             
