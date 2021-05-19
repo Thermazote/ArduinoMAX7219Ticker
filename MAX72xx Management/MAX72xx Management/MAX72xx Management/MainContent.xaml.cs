@@ -20,8 +20,8 @@ namespace MAX72xx_Management
         const int OFFSET_DEFAULT = 0;
         const byte OFF = 0;
         const byte ON = 1;
-        private int Brightness { get; set; } = 7;
-        private int Speed { get; set; } = 7;
+        private int Brightness { get; set; } = 0;
+        private int Speed { get; set; } = 0;
 
         public MainContent()
         {
@@ -44,8 +44,6 @@ namespace MAX72xx_Management
         private void OnModeChanged(object sender, CheckedChangedEventArgs args)
         {
             EntryText.IsEnabled = args.Value;
-            if (args.Value == false)
-                EntryText.Text = string.Empty;
 
             TransmitDataToBluetoothDevice(TextOrMatrixChanged: true);
         }
