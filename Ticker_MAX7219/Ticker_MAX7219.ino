@@ -42,6 +42,12 @@ unsigned char btString[248] = {0};//Строка с текстом
 bool displayChanged = false;    //Для отрисовки  
 bool settingsChanged = false;   //Для настроек
 bool matrixTurnedOn = false;    //Матрица влкючилась
+bool modeChanged = false;       //Изменился режим работы матрицы
+
+//Переменные для сдвига
+unsigned long long int shift_timer = 0; //Таймер
+unsigned char shift_offset = 0;         //Смещение
+
 
 //Шрифт для вывода символов
 const PROGMEM unsigned char font[][5] = {
@@ -105,7 +111,7 @@ const PROGMEM unsigned char font[][5] = {
   {0x07, 0x08, 0x70, 0x08, 0x07}, // Y
   {0x61, 0x51, 0x49, 0x45, 0x43}, // Z
   {0x00, 0x7f, 0x41, 0x41, 0x00}, // [
-  {0x02, 0x04, 0x08, 0x10, 0x20}, // \
+  {0x02, 0x04, 0x08, 0x10, 0x20}, // back slash
   {0x00, 0x41, 0x41, 0x7f, 0x00}, // ]
   {0x04, 0x02, 0x01, 0x02, 0x04}, // ^
   {0x40, 0x40, 0x40, 0x40, 0x40}, // _
@@ -282,6 +288,10 @@ void loop()
         //Если матрица включилась, взводим соответствующий флаг 
         if (btActivateMatrix == 0 && byte_1 == 1)
           matrixTurnedOn = true;
+
+        //Если матрица изменила режим, взводим соответствующий флаг 
+        if (btMode != byte_2)
+          modeChanged = true;
           
         //Считываем байты настроек
         btActivateMatrix = byte_1;
@@ -448,6 +458,8 @@ void loop()
   {
     settingsChanged = false;
     matrix.setIntensity(btBrightness);
+    if (modeChanged)
+      displayChanged = true;
     if (btActivateMatrix == 0)
     {
       matrix.fillScreen(LOW);
@@ -473,10 +485,37 @@ void loop()
   */
   if (btMode == 0)
   {
-    if (btStatic == 0)
+    if (btStatic == 0 && (shift_timer) > 10000 /(btSpeed + 1))
     {
       //Бегущее изображение
-      
+      unsigned char effectiveCol;
+      for (int col = 0; col < 32; col++)
+      {
+        for (int row = 0; row < 8; row++)
+        {
+          //Высчитываем индекс эффективного столбца для вывода
+          if (col + shift_offset < 32)
+            effectiveCol = col + shift_offset;
+          else
+            effectiveCol = col + shift_offset - 32;
+
+          //Выводим с учётом сдвига
+          if (btPixels[effectiveCol] & (1 << row))
+            matrix.drawPixel(col, row, HIGH); 
+          else
+            matrix.drawPixel(col, row, LOW); 
+        }
+      }
+
+      //Выводим всё на матрицу
+      matrix.write();
+
+      //Обновляем данные для сдвига
+      shift_timer = 0;
+      if (shift_offset < 31)
+        shift_offset++;
+      else
+        shift_offset = 0;
     }
     else if (btStatic == 1 && displayChanged)
     {
@@ -501,10 +540,128 @@ void loop()
   }
   else if (btMode == 1)
   {
-    if (btStatic == 0)
+    if (btStatic == 0 && (shift_timer) > 10000 /(btSpeed + 1))
     {
       //Бегущая строка
+      unsigned char symbNumber = 0;           //Номер текущего символа бегущий строки
+      unsigned char col = 0;          //Колонка матрицы
+      unsigned char fontIndex = 0;    //Индекс символа из массива шрифта
+      unsigned char factStart = 0;    //Фактическое начало символа
+      unsigned char factEnd = 4;      //Фактический конец символа
+      bool endMatrix = false;         //Фактический конец матрицы
+      bool stillVisible = true;       //Отрисовываемая строка еще не зашла за левую границу матрицы
       
+      //Гасим все пиксели матрицы
+      matrix.fillScreen(LOW);
+
+      //Пока не дошли до правого края матрицы
+      while (!endMatrix)
+      {
+        //Если символы в строке не кончились отрисовываем, иначе прекращаем
+        if (symbNumber < strlen(btString))
+        {
+          //Находим номер отрисовываемого символа в массиве
+          if (btString[symbNumber] > 31 && btString[symbNumber] < 127)
+            fontIndex = btString[symbNumber] - 32;
+          else if (btString[symbNumber] > 191 && btString[symbNumber] < 256)
+            fontIndex = btString[symbNumber] - 98;
+          else
+            fontIndex = 160;
+            
+          //Если символ это не пробел отрисовываем, иначе делаем обычный офсет
+          if (fontIndex != 0)
+          {
+            /* Некоторые символы по типу "!.,|" имеют пустые боковые столбцы.
+             * Чтобы при использовании таких символов строка текста казалась более плотной,
+             * будем делать проверку крайних (боковых) столбоцов как целого байта на равенство нулю.
+             * Если они равны нулю то удалим из печати этот столбец (просто пропускаем итерацию печати столбца).
+            */
+            //Сначала найдём фактическое начало символа
+            for (int i = 0; i < 5; i++)
+            {
+              if (pgm_read_byte(&font[fontIndex][i]) == 0)
+                factStart++;
+              else
+                break;
+            }
+            
+            //Затем найдём фактический конец символа
+            for (int i = 4; i >= 0; i--)
+            {
+              if (pgm_read_byte(&font[fontIndex][i]) == 0)
+                factEnd--;
+              else
+                break;
+            }
+
+            //После потенциальной обрезки уже отрисовываем символ
+            for (int symbCol = factStart; symbCol <= factEnd ; symbCol++)
+            {     
+              //Если столбец символа не за границей матрицы, то отрисовываем, иначе прекращаем
+              if ((col + symbCol - factStart + 31 - shift_offset) < 32)
+              {
+                //Отрисовываем стоблик симовла
+                for (int symbBit = 0; symbBit < 8; symbBit++)
+                {
+                  //Отрисовка
+                  if (pgm_read_byte(&font[fontIndex][symbCol]) & (1 << symbBit))
+                    matrix.drawPixel(col + symbCol - factStart + 31 - shift_offset, symbBit, HIGH);
+
+                  //Проверка на выход за левую границу
+                  if ((symbNumber == strlen(btString) - 1) && symbCol >= factEnd && (col + symbCol - factStart + 31 - shift_offset) < 0)
+                    stillVisible = false;
+                }
+              }
+              else
+              {
+                //Флаг конца матрицы
+                endMatrix = true;
+                break; 
+              }
+            }
+    
+            /*Высчитываем офсет для следующего символа 
+             * col (текущая позиция на матрице)
+             * + 6 (+5 для символа по умолчанию + 1 для пустого столбика между символами)
+             * - factStart (отнимаем количество удалёных пустых столбцов с начала символа)
+             * 5 - factEnd (отнимаем количество удалёных пустых столбцов с конца символа)
+            */
+            col = col + 6 - factStart - (4 - factEnd);
+
+            //Сбрасываем счётчик стёртых столбцов для следующего символа
+            factStart = 0;
+            factEnd = 4;
+
+            //Переходим к следующему символу в строке
+            symbNumber++;
+          }
+          else
+          {
+            //Офсет для следующего символа (+4 пробел)
+            col+=3;
+
+            //Переходим к следующему символу в строке
+            symbNumber++;
+          }
+        }
+        else
+        {
+          //Устанавливаем текущий символ на начало
+          symbNumber = 0;
+          break;
+        }
+      }
+
+      //Выводим всё на матрицу 
+      matrix.write();
+
+      //Если вся строка пробежала обновляем офсет в ноль
+      if (!stillVisible)
+        shift_offset = 0;
+        
+      //Обновляем данные для сдвига
+      shift_timer = 0;   
+      shift_offset++;
     }
     else if (btStatic == 1 && displayChanged)
     {
@@ -610,4 +767,7 @@ void loop()
       displayChanged = false;
     }
   }
+
+  //Обновляем время
+  shift_timer++;
 }
