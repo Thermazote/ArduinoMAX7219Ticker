@@ -51,7 +51,7 @@ unsigned char shift_offset = 0;         //Смещение
 
 //Шрифт для вывода символов
 const PROGMEM unsigned char font[][5] = {
-  {0x00, 0x00, 0x00, 0x00, 0x00}, //   //32
+  {0x00, 0x00, 0x00, 0x00, 0x00}, // space 32
   {0x00, 0x00, 0x6f, 0x00, 0x00}, // !
   {0x00, 0x07, 0x00, 0x07, 0x00}, // "
   {0x14, 0x7f, 0x14, 0x7f, 0x14}, // #
@@ -145,8 +145,8 @@ const PROGMEM unsigned char font[][5] = {
   {0x00, 0x08, 0x36, 0x41, 0x41}, // {
   {0x00, 0x00, 0x7f, 0x00, 0x00}, // |
   {0x41, 0x41, 0x36, 0x08, 0x00}, // }
-  {0x04, 0x02, 0x04, 0x08, 0x04}, // ~  //126 
-  {0x7E, 0x11, 0x11, 0x11, 0x7E}, // А  //192
+  {0x04, 0x02, 0x04, 0x08, 0x04}, // tilda 126 
+  {0x7E, 0x11, 0x11, 0x11, 0x7E}, // А 192
   {0x7F, 0x49, 0x49, 0x49, 0x33}, // Б
   {0x7F, 0x49, 0x49, 0x49, 0x36}, // В
   {0x7F, 0x01, 0x01, 0x01, 0x03}, // Г
@@ -564,7 +564,7 @@ void loop()
           if (btString[symbNumber] > 31 && btString[symbNumber] < 127)
             fontIndex = btString[symbNumber] - 32;
           else if (btString[symbNumber] > 191 && btString[symbNumber] < 256)
-            fontIndex = btString[symbNumber] - 98;
+            fontIndex = btString[symbNumber] - 97;
           else
             fontIndex = 160;
             
@@ -685,7 +685,7 @@ void loop()
           if (btString[symbNumber] > 31 && btString[symbNumber] < 127)
             fontIndex = btString[symbNumber] - 32;
           else if (btString[symbNumber] > 191 && btString[symbNumber] < 256)
-            fontIndex = btString[symbNumber] - 98;
+            fontIndex = btString[symbNumber] - 97;
           else
             fontIndex = 160;
             
