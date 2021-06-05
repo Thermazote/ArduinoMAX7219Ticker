@@ -32,11 +32,11 @@
                 <Switch x:Name="StaticModeSwitch" IsToggled="False" HorizontalOptions="End" ThumbColor="#0aa597" OnColor="#8bd1d3" Toggled="OnStaticModeToggled"/>
             </StackLayout>
 
-            <Label x:Name="BrightnessLabel" Text="Brightness: 7" FontSize="Body" TextColor="Black" Padding="30, 10"/>
-            <Slider x:Name="BrightnessSlider" Maximum="15" Value="7"  MinimumTrackColor="#8bd1d3" MaximumTrackColor="Gray" ThumbColor="#0aa597" Margin="13, 10" ValueChanged="OnBrightnessChanged" />
+            <Label x:Name="BrightnessLabel" Text="Brightness: 0" FontSize="Body" TextColor="Black" Padding="30, 10"/>
+            <Slider x:Name="BrightnessSlider" Maximum="15" Value="0"  MinimumTrackColor="#8bd1d3" MaximumTrackColor="Gray" ThumbColor="#0aa597" Margin="13, 10" ValueChanged="OnBrightnessChanged" />
 
-            <Label x:Name="SpeedLabel" Text="Speed: 7" FontSize="Body" TextColor="Black" Padding="30, 10"/>
-            <Slider x:Name="SpeedSlider" Maximum="15" Value="7" MinimumTrackColor="#8bd1d3" MaximumTrackColor="Gray" ThumbColor="#0aa597" Margin="13, 10" ValueChanged="OnSpeedChanged" />
+            <Label x:Name="SpeedLabel" Text="Speed: 0" FontSize="Body" TextColor="Black" Padding="30, 10"/>
+            <Slider x:Name="SpeedSlider" Maximum="15" Value="0" MinimumTrackColor="#8bd1d3" MaximumTrackColor="Gray" ThumbColor="#0aa597" Margin="13, 10" ValueChanged="OnSpeedChanged" />
 
             <Label x:Name="DrawingFieldLabel" Text="Drawing field:" FontSize="Body" TextColor="Black" Padding="30, 10"/>
 
