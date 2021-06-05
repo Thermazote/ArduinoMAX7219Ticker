@@ -21,6 +21,8 @@
 #define START_CHAR 2  //непечатаемый символ ASCII: STX (02) "start of text"
 #define END_CHAR 3    //непечатаемый символ ASCII: ETX (03) "end of text"
 
+#define SPEED_RATIO 10000 //Коэффициент скорости. Чем меньше значение, тем больше скорость
+
 /*------------- Переменные -------------*/
 //Создаём экземпляр класса матрицы
 Max72xxPanel matrix = Max72xxPanel(MATRIX_CS, NUM_VERTICAL_MATRIX, NUM_HORIZONTAL_MATRIX);
@@ -47,7 +49,8 @@ bool modeChanged = false;       //Изменился режим работы м�
 //Переменные для сдвига
 unsigned long long int shift_timer = 0; //Таймер
 unsigned char shift_offset = 0;         //Смещение
-
+unsigned char prevSymbNumber = 0;       //Индекс символа с которого началась предыдущая отрисовка (оптимизация)
+unsigned int prevCol = 0;               //Индекс колонки с которой началась предыдущая отрисовка (оптимизация)
 
 //Шрифт для вывода символов
 const PROGMEM unsigned char font[][5] = {
@@ -256,7 +259,7 @@ void loop()
 {
   //Проверяем буфер на наличие новых данных
   if (btSerial.available() > 0)
-  {    
+  {
     //Если включено перенаправление в порт
     if (REDIRECT_SERIAL_MONITOR)
     {
@@ -439,9 +442,9 @@ void loop()
         else if (btMode == 1)
         {
           //Строка текста
-          Serial.print("String: ");
+          Serial.println("String: ");
           for (int i = 0; i < strlen(btString); i++)
-            Serial.print(btString[i]);
+            Serial.println(btString[i]);
         }
       }
     }
@@ -458,8 +461,15 @@ void loop()
   {
     settingsChanged = false;
     matrix.setIntensity(btBrightness);
+    if (displayChanged)
+    {
+      prevCol = 0;
+      prevSymbNumber = 0;
+    }
     if (modeChanged)
-      displayChanged = true;
+    {
+      displayChanged = true; 
+    }
     if (btActivateMatrix == 0)
     {
       matrix.fillScreen(LOW);
@@ -485,7 +495,7 @@ void loop()
   */
   if (btMode == 0)
   {
-    if (btStatic == 0 && (shift_timer) > 10000 /(btSpeed + 1))
+    if (btStatic == 0 && (shift_timer) > SPEED_RATIO /(btSpeed + 1))
     {
       //Бегущее изображение
       unsigned char effectiveCol;
@@ -540,16 +550,17 @@ void loop()
   }
   else if (btMode == 1)
   {
-    if (btStatic == 0 && (shift_timer) > 10000 /(btSpeed + 1))
+    if (btStatic == 0 && (shift_timer) > SPEED_RATIO /(btSpeed + 1))
     {
       //Бегущая строка
-      unsigned char symbNumber = 0;           //Номер текущего символа бегущий строки
-      unsigned char col = 0;          //Колонка матрицы
-      unsigned char fontIndex = 0;    //Индекс символа из массива шрифта
-      unsigned char factStart = 0;    //Фактическое начало символа
-      unsigned char factEnd = 4;      //Фактический конец символа
-      bool endMatrix = false;         //Фактический конец матрицы
-      bool stillVisible = true;       //Отрисовываемая строка еще не зашла за левую границу матрицы
+      unsigned char symbNumber = prevSymbNumber;  //Номер текущего символа бегущий строки
+      unsigned char col = prevCol;                //Колонка матрицы
+      unsigned char fontIndex = 0;                //Индекс символа из массива шрифта
+      unsigned char factStart = 0;                //Фактическое начало символа
+      unsigned char factEnd = 4;                  //Фактический конец символа
+      bool endMatrix = false;                     //Фактический конец матрицы
+      bool stillVisible = true;                   //Отрисовываемая строка еще не зашла за левую границу матрицы
+      bool firstWritten = true;                   //Отрисовывается первый видимый символ 
       
       //Гасим все пиксели матрицы
       matrix.fillScreen(LOW);
@@ -596,20 +607,33 @@ void loop()
 
             //После потенциальной обрезки уже отрисовываем символ
             for (int symbCol = factStart; symbCol <= factEnd ; symbCol++)
-            {     
-              //Если столбец символа не за границей матрицы, то отрисовываем, иначе прекращаем
+            {
+              //Если мы сейчас на левой границе взводим флаг, что итерация является конечной
+              if ((symbNumber == strlen(btString) - 1) && (symbCol >= factEnd) && (col + symbCol - factStart + 31 - shift_offset) <= 0)
+              {
+                stillVisible = false;
+              }  
+              //Если столбец символа не за правой границей матрицы, то продолжаем, иначе прекращаем
               if ((col + symbCol - factStart + 31 - shift_offset) < 32)
               {
-                //Отрисовываем стоблик симовла
-                for (int symbBit = 0; symbBit < 8; symbBit++)
+                //Если столбец символа не за левой границей матрицы, то продолжаем, иначе прекращаем
+                if ((col + symbCol - factStart + 31 - shift_offset) >= 0)
                 {
-                  //Отрисовка
-                  if (pgm_read_byte(&font[fontIndex][symbCol]) & (1 << symbBit))
-                    matrix.drawPixel(col + symbCol - factStart + 31 - shift_offset, symbBit, HIGH);
+                  //Отрисовываем стоблик симовла
+                  for (int symbBit = 0; symbBit < 8; symbBit++)
+                  {
+                    //Отрисовка
+                    if (pgm_read_byte(&font[fontIndex][symbCol]) & (1 << symbBit))
+                      matrix.drawPixel(col + symbCol - factStart + 31 - shift_offset, symbBit, HIGH);
+                  }
 
-                  //Проверка на выход за левую границу
-                  if ((symbNumber == strlen(btString) - 1) && symbCol >= factEnd && (col + symbCol - factStart + 31 - shift_offset) < 0)
-                    stillVisible = false;
+                  //Оптимизирующее вычисление позиции с которой начинается следующая итерация отрисовки
+                  if (firstWritten)
+                  {
+                    firstWritten = false;
+                    prevSymbNumber = symbNumber;
+                    prevCol = col;
+                  } 
                 }
               }
               else
@@ -646,8 +670,6 @@ void loop()
         }
         else
         {
-          //Устанавливаем текущий символ на начало
-          symbNumber = 0;
           break;
         }
       }
@@ -655,9 +677,13 @@ void loop()
       //Выводим всё на матрицу 
       matrix.write();
 
-      //Если вся строка пробежала обновляем офсет в ноль
+      //Если вся строка пробежала обновляем офсет в ноль (-1 так как в конце инкремент)
       if (!stillVisible)
-        shift_offset = 0;
+      {
+        prevSymbNumber = 0;
+        prevCol = 0;
+        shift_offset = -1;
+      }
         
       //Обновляем данные для сдвига
       shift_timer = 0;   
