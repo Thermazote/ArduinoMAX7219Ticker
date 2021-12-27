@@ -375,8 +375,17 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/csharp
 
 ### BottomNavigation Errors ###
-MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Debug/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemReselectedListenerImplementor.class
-MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Debug/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemSelectedListenerImplementor.class
-MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Release/110/android/bin/classes/mono/androidx/core/view/accessibility/AccessibilityManagerCompat_TouchExplorationStateChangeListenerImplementor.class
-MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Release/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemReselectedListenerImplementor.class
-MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Release/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemSelectedListenerImplementor.class
+
+MAX72xx Management/.vs/
+
+MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/bin/
+MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/
+
+MAX72xx Management/MAX72xx Management/MAX72xx Management.iOS/bin/
+MAX72xx Management/MAX72xx Management/MAX72xx Management.iOS/obj/
+
+# MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Debug/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemReselectedListenerImplementor.class
+# MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Debug/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemSelectedListenerImplementor.class
+# MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Release/110/android/bin/classes/mono/androidx/core/view/accessibility/AccessibilityManagerCompat_TouchExplorationStateChangeListenerImplementor.class
+# MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Release/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemReselectedListenerImplementor.class
+# MAX72xx Management/MAX72xx Management/MAX72xx Management.Android/obj/Release/110/android/bin/classes/mono/com/google/android/material/bottomnavigation/BottomNavigationView_OnNavigationItemSelectedListenerImplementor.class
