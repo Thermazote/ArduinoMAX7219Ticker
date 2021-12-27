@@ -6,6 +6,7 @@ androidembedprofilers=
 androidenableprofiledaot=false
 androiddextool=d8
 androidlinktool=
+androidlinkresources=false
 androidpackageformat=apk
 embedassembliesintoapk=true
 androidlinkmode=none
@@ -15,7 +16,7 @@ androidsdkpath=c:\program files (x86)\android\android-sdk\
 androidndkpath=
 javasdkpath=c:\program files\android\jdk\microsoft_dist_openjdk_1.8.0.25\
 androidsequencepointsmode=normal
-xamarinandroidversion=11.2.2-1
+xamarinandroidversion=11.4.0-5
 monosymbolarchive=true
 androiduselatestplatformsdk=false
 targetframeworkversion=v11.0
@@ -24,9 +25,10 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=false
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=637562402238943520
+_nugetassetstimestamp=637598946134245269
 typemapkind=mvid
 androidsupportedabis=arm64-v8a
 armeabi-v7a
 x86
 x86_64
+androidmanifestplaceholders=

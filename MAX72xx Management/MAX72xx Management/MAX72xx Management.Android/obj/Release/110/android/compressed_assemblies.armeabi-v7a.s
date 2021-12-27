@@ -37,7 +37,7 @@
 
 	/* 1: I18N.Other.dll */
 	/* uncompressed_file_size */
-	.long	45456
+	.long	45448
 	/* loaded */
 	.byte	0
 	/* data */
@@ -46,7 +46,7 @@
 
 	/* 2: I18N.dll */
 	/* uncompressed_file_size */
-	.long	48528
+	.long	48504
 	/* loaded */
 	.byte	0
 	/* data */
@@ -55,7 +55,7 @@
 
 	/* 3: Java.Interop.dll */
 	/* uncompressed_file_size */
-	.long	208784
+	.long	208760
 	/* loaded */
 	.byte	0
 	/* data */
@@ -73,7 +73,7 @@
 
 	/* 5: MAX72xx Management.dll */
 	/* uncompressed_file_size */
-	.long	50688
+	.long	51200
 	/* loaded */
 	.byte	0
 	/* data */
@@ -82,7 +82,7 @@
 
 	/* 6: Mono.Android.dll */
 	/* uncompressed_file_size */
-	.long	29983624
+	.long	30011272
 	/* loaded */
 	.byte	0
 	/* data */
@@ -91,7 +91,7 @@
 
 	/* 7: Mono.Security.dll */
 	/* uncompressed_file_size */
-	.long	251280
+	.long	250744
 	/* loaded */
 	.byte	0
 	/* data */
@@ -118,7 +118,7 @@
 
 	/* 10: System.ComponentModel.Composition.dll */
 	/* uncompressed_file_size */
-	.long	267664
+	.long	267640
 	/* loaded */
 	.byte	0
 	/* data */
@@ -127,7 +127,7 @@
 
 	/* 11: System.Core.dll */
 	/* uncompressed_file_size */
-	.long	1094032
+	.long	1094008
 	/* loaded */
 	.byte	0
 	/* data */
@@ -136,7 +136,7 @@
 
 	/* 12: System.Data.DataSetExtensions.dll */
 	/* uncompressed_file_size */
-	.long	38800
+	.long	38776
 	/* loaded */
 	.byte	0
 	/* data */
@@ -145,7 +145,7 @@
 
 	/* 13: System.Data.dll */
 	/* uncompressed_file_size */
-	.long	1935760
+	.long	1935224
 	/* loaded */
 	.byte	0
 	/* data */
@@ -154,7 +154,7 @@
 
 	/* 14: System.Drawing.Common.dll */
 	/* uncompressed_file_size */
-	.long	170384
+	.long	170352
 	/* loaded */
 	.byte	0
 	/* data */
@@ -163,7 +163,7 @@
 
 	/* 15: System.IO.Compression.FileSystem.dll */
 	/* uncompressed_file_size */
-	.long	27536
+	.long	27528
 	/* loaded */
 	.byte	0
 	/* data */
@@ -172,7 +172,7 @@
 
 	/* 16: System.IO.Compression.dll */
 	/* uncompressed_file_size */
-	.long	124816
+	.long	124792
 	/* loaded */
 	.byte	0
 	/* data */
@@ -181,7 +181,7 @@
 
 	/* 17: System.Memory.dll */
 	/* uncompressed_file_size */
-	.long	13704
+	.long	13688
 	/* loaded */
 	.byte	0
 	/* data */
@@ -190,7 +190,7 @@
 
 	/* 18: System.Net.Http.dll */
 	/* uncompressed_file_size */
-	.long	291728
+	.long	291704
 	/* loaded */
 	.byte	0
 	/* data */
@@ -199,7 +199,7 @@
 
 	/* 19: System.Numerics.Vectors.dll */
 	/* uncompressed_file_size */
-	.long	21384
+	.long	21368
 	/* loaded */
 	.byte	0
 	/* data */
@@ -208,7 +208,7 @@
 
 	/* 20: System.Numerics.dll */
 	/* uncompressed_file_size */
-	.long	128904
+	.long	128888
 	/* loaded */
 	.byte	0
 	/* data */
@@ -217,7 +217,7 @@
 
 	/* 21: System.Runtime.Serialization.dll */
 	/* uncompressed_file_size */
-	.long	875912
+	.long	875896
 	/* loaded */
 	.byte	0
 	/* data */
@@ -226,7 +226,7 @@
 
 	/* 22: System.Runtime.dll */
 	/* uncompressed_file_size */
-	.long	21392
+	.long	21384
 	/* loaded */
 	.byte	0
 	/* data */
@@ -235,7 +235,7 @@
 
 	/* 23: System.ServiceModel.Internals.dll */
 	/* uncompressed_file_size */
-	.long	227728
+	.long	227704
 	/* loaded */
 	.byte	0
 	/* data */
@@ -244,7 +244,7 @@
 
 	/* 24: System.Text.Encoding.CodePages.dll */
 	/* uncompressed_file_size */
-	.long	14224
+	.long	14208
 	/* loaded */
 	.byte	0
 	/* data */
@@ -253,7 +253,7 @@
 
 	/* 25: System.Transactions.dll */
 	/* uncompressed_file_size */
-	.long	41360
+	.long	41336
 	/* loaded */
 	.byte	0
 	/* data */
@@ -262,7 +262,7 @@
 
 	/* 26: System.Web.Services.dll */
 	/* uncompressed_file_size */
-	.long	223632
+	.long	223608
 	/* loaded */
 	.byte	0
 	/* data */
@@ -271,7 +271,7 @@
 
 	/* 27: System.Xml.Linq.dll */
 	/* uncompressed_file_size */
-	.long	146832
+	.long	146808
 	/* loaded */
 	.byte	0
 	/* data */
@@ -280,7 +280,7 @@
 
 	/* 28: System.Xml.dll */
 	/* uncompressed_file_size */
-	.long	2451856
+	.long	2451832
 	/* loaded */
 	.byte	0
 	/* data */
@@ -748,7 +748,7 @@
 
 	/* 80: mscorlib.dll */
 	/* uncompressed_file_size */
-	.long	4514192
+	.long	4513656
 	/* loaded */
 	.byte	0
 	/* data */
@@ -757,7 +757,7 @@
 
 	/* 81: netstandard.dll */
 	/* uncompressed_file_size */
-	.long	99704
+	.long	99720
 	/* loaded */
 	.byte	0
 	/* data */

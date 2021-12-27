@@ -603,7 +603,6 @@ D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\MonoAndroid,Version=v11.0.AssemblyAttributes.cs
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\build.props
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\adb.props
-D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\MAX72xx Management.Android.csprojAssemblyReference.cache
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\stamp\_BuildLibraryImportsCache.stamp
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\res.flag
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\lp\45\jl\files.cache
@@ -1184,3 +1183,4 @@ D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\stamp\_GenerateJavaStubs.stamp
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\stamp\_GeneratePackageManagerJava.stamp
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\stamp\_ResolveLibraryProjectImports.stamp
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.Android\obj\Release\110\MAX72xx Management.Android.csproj.AssemblyReference.cache

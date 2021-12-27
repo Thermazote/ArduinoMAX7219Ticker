@@ -29,3 +29,5 @@ D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.dll
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\ref\MAX72xx Management.dll
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.pdb
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.csproj.AssemblyReference.cache
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management\obj\Release\netstandard2.0\MAX72xx Management.GeneratedMSBuildEditorConfig.editorconfig

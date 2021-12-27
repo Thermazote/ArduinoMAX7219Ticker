@@ -116,7 +116,7 @@ D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\coremlc\_PartialAppManifest.items
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\coremlc\_BundleResourceWithLogicalName.items
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\optimized\
-D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\MAX72xx Management.iOS.csprojAssemblyReference.cache
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\MAX72xx Management.iOS.csproj.CoreCompileInputs.cache
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\MAX72xx Management.iOS.csproj.CopyComplete
 D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\MAX72xx Management.iOS.exe
+D:\Mobile Applications\MAX72xx Management\MAX72xx Management\MAX72xx Management\MAX72xx Management.iOS\obj\iPhoneSimulator\Release\MAX72xx Management.iOS.csproj.AssemblyReference.cache

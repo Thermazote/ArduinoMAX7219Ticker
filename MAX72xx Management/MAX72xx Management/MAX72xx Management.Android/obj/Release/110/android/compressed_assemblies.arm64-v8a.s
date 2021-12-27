@@ -17,7 +17,7 @@
 
 	/* 1: I18N.Other.dll */
 	/* uncompressed_file_size */
-	.word	45456
+	.word	45448
 	/* loaded */
 	.byte	0
 	/* data */
@@ -26,7 +26,7 @@
 
 	/* 2: I18N.dll */
 	/* uncompressed_file_size */
-	.word	48528
+	.word	48504
 	/* loaded */
 	.byte	0
 	/* data */
@@ -35,7 +35,7 @@
 
 	/* 3: Java.Interop.dll */
 	/* uncompressed_file_size */
-	.word	208784
+	.word	208760
 	/* loaded */
 	.byte	0
 	/* data */
@@ -53,7 +53,7 @@
 
 	/* 5: MAX72xx Management.dll */
 	/* uncompressed_file_size */
-	.word	50688
+	.word	51200
 	/* loaded */
 	.byte	0
 	/* data */
@@ -62,7 +62,7 @@
 
 	/* 6: Mono.Android.dll */
 	/* uncompressed_file_size */
-	.word	29983624
+	.word	30011272
 	/* loaded */
 	.byte	0
 	/* data */
@@ -71,7 +71,7 @@
 
 	/* 7: Mono.Security.dll */
 	/* uncompressed_file_size */
-	.word	251280
+	.word	250744
 	/* loaded */
 	.byte	0
 	/* data */
@@ -98,7 +98,7 @@
 
 	/* 10: System.ComponentModel.Composition.dll */
 	/* uncompressed_file_size */
-	.word	267664
+	.word	267640
 	/* loaded */
 	.byte	0
 	/* data */
@@ -107,7 +107,7 @@
 
 	/* 11: System.Core.dll */
 	/* uncompressed_file_size */
-	.word	1094032
+	.word	1094008
 	/* loaded */
 	.byte	0
 	/* data */
@@ -116,7 +116,7 @@
 
 	/* 12: System.Data.DataSetExtensions.dll */
 	/* uncompressed_file_size */
-	.word	38800
+	.word	38776
 	/* loaded */
 	.byte	0
 	/* data */
@@ -125,7 +125,7 @@
 
 	/* 13: System.Data.dll */
 	/* uncompressed_file_size */
-	.word	1935760
+	.word	1935224
 	/* loaded */
 	.byte	0
 	/* data */
@@ -134,7 +134,7 @@
 
 	/* 14: System.Drawing.Common.dll */
 	/* uncompressed_file_size */
-	.word	170384
+	.word	170352
 	/* loaded */
 	.byte	0
 	/* data */
@@ -143,7 +143,7 @@
 
 	/* 15: System.IO.Compression.FileSystem.dll */
 	/* uncompressed_file_size */
-	.word	27536
+	.word	27528
 	/* loaded */
 	.byte	0
 	/* data */
@@ -152,7 +152,7 @@
 
 	/* 16: System.IO.Compression.dll */
 	/* uncompressed_file_size */
-	.word	124816
+	.word	124792
 	/* loaded */
 	.byte	0
 	/* data */
@@ -161,7 +161,7 @@
 
 	/* 17: System.Memory.dll */
 	/* uncompressed_file_size */
-	.word	13704
+	.word	13688
 	/* loaded */
 	.byte	0
 	/* data */
@@ -170,7 +170,7 @@
 
 	/* 18: System.Net.Http.dll */
 	/* uncompressed_file_size */
-	.word	291728
+	.word	291704
 	/* loaded */
 	.byte	0
 	/* data */
@@ -179,7 +179,7 @@
 
 	/* 19: System.Numerics.Vectors.dll */
 	/* uncompressed_file_size */
-	.word	21384
+	.word	21368
 	/* loaded */
 	.byte	0
 	/* data */
@@ -188,7 +188,7 @@
 
 	/* 20: System.Numerics.dll */
 	/* uncompressed_file_size */
-	.word	128904
+	.word	128888
 	/* loaded */
 	.byte	0
 	/* data */
@@ -197,7 +197,7 @@
 
 	/* 21: System.Runtime.Serialization.dll */
 	/* uncompressed_file_size */
-	.word	875912
+	.word	875896
 	/* loaded */
 	.byte	0
 	/* data */
@@ -206,7 +206,7 @@
 
 	/* 22: System.Runtime.dll */
 	/* uncompressed_file_size */
-	.word	21392
+	.word	21384
 	/* loaded */
 	.byte	0
 	/* data */
@@ -215,7 +215,7 @@
 
 	/* 23: System.ServiceModel.Internals.dll */
 	/* uncompressed_file_size */
-	.word	227728
+	.word	227704
 	/* loaded */
 	.byte	0
 	/* data */
@@ -224,7 +224,7 @@
 
 	/* 24: System.Text.Encoding.CodePages.dll */
 	/* uncompressed_file_size */
-	.word	14224
+	.word	14208
 	/* loaded */
 	.byte	0
 	/* data */
@@ -233,7 +233,7 @@
 
 	/* 25: System.Transactions.dll */
 	/* uncompressed_file_size */
-	.word	41360
+	.word	41336
 	/* loaded */
 	.byte	0
 	/* data */
@@ -242,7 +242,7 @@
 
 	/* 26: System.Web.Services.dll */
 	/* uncompressed_file_size */
-	.word	223632
+	.word	223608
 	/* loaded */
 	.byte	0
 	/* data */
@@ -251,7 +251,7 @@
 
 	/* 27: System.Xml.Linq.dll */
 	/* uncompressed_file_size */
-	.word	146832
+	.word	146808
 	/* loaded */
 	.byte	0
 	/* data */
@@ -260,7 +260,7 @@
 
 	/* 28: System.Xml.dll */
 	/* uncompressed_file_size */
-	.word	2451856
+	.word	2451832
 	/* loaded */
 	.byte	0
 	/* data */
@@ -728,7 +728,7 @@
 
 	/* 80: mscorlib.dll */
 	/* uncompressed_file_size */
-	.word	4514192
+	.word	4513656
 	/* loaded */
 	.byte	0
 	/* data */
@@ -737,7 +737,7 @@
 
 	/* 81: netstandard.dll */
 	/* uncompressed_file_size */
-	.word	99704
+	.word	99720
 	/* loaded */
 	.byte	0
 	/* data */
