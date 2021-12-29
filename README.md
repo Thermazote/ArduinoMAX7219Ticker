@@ -26,9 +26,6 @@ HC-06 uses frequency hopping spread spectrum technique (FHSS) to avoid interfere
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Scheme.png)
 ## Firmware design features
 * The firmware uses the library **SofwareSerial**. Macro `_SS_MAX_RX_BUFF` is redefined from `64` to `256`. This is necessary to increase the buffer size from 64 to 256 bytes. Such a measure is necessary in order for the data packet to fit into the buffer. File **SofwareSerial.h** is in _"C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src"_ directory.
-## Android application development
-<img align="left" src="https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Application_logo.png"></img>
-Application powered by [Xamarin](https://dotnet.microsoft.com/apps/xamarin)
 ## Animations
 ### Connection to scheme
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/connection.gif)
@@ -36,3 +33,10 @@ Application powered by [Xamarin](https://dotnet.microsoft.com/apps/xamarin)
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/static_text.gif)
 ### Static and running mode
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/static_and_runing.gif)
+### Speed control
+![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/speed.gif)
+### Drawing mode and brightness control
+![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/drawing_and_brightness.gif)
+## Android application development
+<img align="left" src="https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Application_logo.png"></img>
+Application powered by [Xamarin](https://dotnet.microsoft.com/apps/xamarin)
