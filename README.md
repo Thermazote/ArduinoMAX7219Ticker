@@ -30,5 +30,9 @@ HC-06 uses frequency hopping spread spectrum technique (FHSS) to avoid interfere
 <img align="left" src="https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/Application_logo.png"></img>
 Application powered by [Xamarin](https://dotnet.microsoft.com/apps/xamarin)
 ## Animations
-Connection to scheme
+### Connection to scheme
 ![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/connection.gif)
+### Static text
+![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/static_text.gif)
+### Static and running mode
+![alt tag](https://github.com/Thermazote/Arduino-MAX7219-Ticker/raw/develop/Pics/static_and_runing.gif)
